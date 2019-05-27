@@ -14,43 +14,89 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(),
-      body: Form(
-          key: _formKey,
-          child: Column(
-            children: <Widget>[
-              TextFormField(
-                validator: (input) {
-                  if(input.isEmpty){
-                    return 'Porfavor ingresa un correo';
-                  }
-                },
-                decoration: InputDecoration(
-                    labelText: 'Email'
+    double width = MediaQuery.of(context).size.width;
+
+    double box = width * 0.80;
+    return Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: <Widget>[
+            Container(
+              decoration: new BoxDecoration(
+                image: new DecorationImage(
+                  image: new AssetImage("assets/images/baby.jpg"),
+                  fit: BoxFit.cover,
                 ),
-                onSaved: (input) => _email = input,
               ),
-              TextFormField(
-                validator: (input) {
-                  if(input.length < 6){
-                    return 'La clave debe tener al menos 6 caracteres';
-                  }
-                },
-                decoration: InputDecoration(
-                    labelText: 'Password'
-                ),
-                onSaved: (input) => _password = input,
-                obscureText: true,
+            ),
+            Column(children: <Widget>[
+              AppBar(
+                backgroundColor: new Color.fromRGBO(5, 4, 4, 0.5),
+                centerTitle: true,
+                title: Text("Sign in"),
               ),
-              RaisedButton(
-                onPressed: signUp,
-                child: Text('Sign up'),
-              ),
-            ],
-          )
-      ),
-    );
+            ]),
+            Center(
+                child: Container(
+                    child:
+                    Center(
+                      child: Container(
+                          alignment: Alignment.bottomCenter,
+                          width: box,
+                          height: 250,
+                          padding: EdgeInsets.fromLTRB(10, 40, 10, 0),
+                          color: Color.fromRGBO(5, 4, 4, 0.5),
+                          child: Form(
+                              key: _formKey,
+                              child: Column(
+                                children: <Widget>[
+                                  Text('Bienvenido',style: TextStyle(color: Colors.white,fontSize: 24),),
+                                  TextFormField(
+
+                                    style: TextStyle(color: Colors.white),
+                                    validator: (input) {
+                                      if (input.isEmpty) {
+                                        return 'Por favor digita un correo';
+                                      }
+                                    },
+                                    decoration: InputDecoration(labelText: 'Email',
+                                      fillColor: Colors.white,
+                                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(2))),
+
+                                    ),
+                                    onSaved: (input) => _email = input,
+                                  ),
+                                  TextFormField(
+                                    style: TextStyle(color: Colors.white),
+                                    validator: (input) {
+                                      if (input.length < 6) {
+                                        return 'Su contraseña debe ser de al menos 6 caracteres';
+                                      }
+                                    },
+                                    decoration:
+                                    InputDecoration(labelText: 'Contraseña',fillColor: Colors.white,
+                                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(2))),
+                                    ),
+                                    onSaved: (input) => _password = input,
+                                    obscureText: true,
+
+                                  ),
+                                  RaisedButton(
+                                    color: Colors.indigo,
+                                    textColor: Colors.white,
+                                    shape: Border(bottom: BorderSide(color: Colors.white)),
+                                    elevation: box,
+                                    highlightColor: Colors.white,
+                                    onPressed: signUp,
+                                    child: Text('Sign up'),
+                                  ),
+                                ],
+                              ))),
+                    )
+
+                ))
+          ],
+        ));
   }
 
   void signUp() async {

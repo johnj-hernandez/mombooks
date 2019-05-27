@@ -36,7 +36,7 @@ class _WelcomePageState extends State<WelcomePage> {
         ),
         Center(
           child: Container(
-            alignment: Alignment.bottomCenter,
+              alignment: Alignment.bottomCenter,
               width: box,
               height: 200,
               color: Color.fromRGBO(5, 4, 4, 0.5),
@@ -46,33 +46,45 @@ class _WelcomePageState extends State<WelcomePage> {
                   Center(
                       child:
                       Text(
-                    "Hello Mom.",
-                    style: TextStyle(color: Colors.white, fontSize: 32),
-                  ))
+                        "Hello Mom.",
+                        style: TextStyle(color: Colors.white, fontSize: 32),
+                      ))
                   ,
                   Container(
-                    height: 160,
+                      height: 160,
+                      padding: EdgeInsets.fromLTRB(0, 80, 0, 0),
                       alignment: Alignment.bottomCenter,
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                        Column(
+                            Column(
 
-                            children: <Widget>[
-                                RaisedButton(
-                                  onPressed: navigateToSignIn,
-                                  child: Text('Sign in'),
-                                ),
+                                children: <Widget>[
+                                  RaisedButton(
+                                    splashColor: Colors.blue,
+                                    elevation: 10,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                    textColor: Colors.purple,
+                                    highlightColor: Colors.white,
+                                    onPressed: navigateToSignIn,
+                                    child: Text('Sign in'),
+                                  ),
 
+                                ]),
+                            Column(children: <Widget>[
+                              RaisedButton(
+                                splashColor: Colors.blue,
+                                elevation: 10,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                textColor: Colors.purple,
+                                highlightColor: Colors.white,
+
+                                onPressed: navigateToSignUp,
+                                child: Text('Sign up'),
+                              )
                             ]),
-                        Column(children: <Widget>[
-                          RaisedButton(
-                            onPressed: navigateToSignUp,
-                            child: Text('Sign up'),
-                          )
-                        ]),
-                      ]))
+                          ]))
                 ],
               )),
         )
