@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mombook/pages/setup/sign_in.dart';
-import 'package:mombook/pages/setup/sign_up.dart';
+import 'package:mombooks/pages/setup/sign_in.dart';
+import 'package:mombooks/pages/setup/sign_up.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class WelcomePage extends StatefulWidget {

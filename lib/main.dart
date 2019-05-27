@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mombook/pages/setup/welcome.dart';
+import 'package:mombooks/pages/setup/welcome.dart';
 
 void main() => runApp(MyApp());
 
