@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "543879113055",
+    "firebase_url": "https://mombook-9413a.firebaseio.com",
+    "project_id": "mombook-9413a",
+    "storage_bucket": "mombook-9413a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543879113055:android:7ca11897ec8d1e84",
+        "android_client_info": {
+          "package_name": "com.example.mombook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543879113055-lotlurk2ujth0pj5bk89njbiej1gv2h3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTbIbVHcoszbDQR6TBNP8Xh0e4D0aGjA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543879113055-lotlurk2ujth0pj5bk89njbiej1gv2h3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543879113055:android:feda0fbe13596df2",
+        "android_client_info": {
+          "package_name": "com.example.mombooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543879113055-lotlurk2ujth0pj5bk89njbiej1gv2h3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTbIbVHcoszbDQR6TBNP8Xh0e4D0aGjA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543879113055-lotlurk2ujth0pj5bk89njbiej1gv2h3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
