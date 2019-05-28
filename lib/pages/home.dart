@@ -3,6 +3,7 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart' show C
 import 'package:mombooks/note.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mombooks/pages/dayview.dart';
 
 class Home extends StatelessWidget {
 
@@ -69,7 +70,13 @@ class _CalendarHomeState extends State<CalendarHome> {
                 markedDates: mylist ,
                 markedDateShowIcon: true,
                 markedDateMoreCustomTextStyle: TextStyle(backgroundColor: Colors.teal,color: Colors.amber),
-                //selectedDateTime: _currentDate,
+                onDayPressed: (dateT,list){
+                  //comprobamos que el mes tenga dos digitos
+                  String month=dateT.month<10?"0"+dateT.month.toString():dateT.month.toString();
+                  String fecha=(dateT.year).toString()+"-"+month+"-"+(dateT.day).toString();
+                  print(fecha);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => DayView(user: this.widget.user,fecha: fecha)));
+                },
                 daysHaveCircularBorder: false, /// null for not rendering any border, true for circular border, false for rectangular border
               ),
             );
