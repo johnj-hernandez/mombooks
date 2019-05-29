@@ -4,6 +4,7 @@ import 'package:mombooks/note.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mombooks/pages/dayview.dart';
+import 'package:mombooks/pages/muro.dart';
 
 class Home extends StatelessWidget {
 
@@ -36,7 +37,7 @@ class Home extends StatelessWidget {
             child: TabBarView(
               children: <Widget>[
                 CalendarHome(user: this.user,),
-                Center(child: Icon(Icons.assignment)),
+                Muro(),
                 Center(child: Icon(Icons.settings)),
               ],
             ),

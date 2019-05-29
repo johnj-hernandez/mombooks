@@ -26,7 +26,7 @@ class _MuroState extends State<Muro> {
             return new Center(child: new CircularProgressIndicator());
           default:
             return ListView.builder(
-              itemCount: snapshot.data.documents.length,
+              itemCount: snapshot.data.documents.length-1,
               itemBuilder: (BuildContext context, int i) =>
                   _buildRow(context, snapshot.data.documents[i]),
             );
@@ -42,7 +42,7 @@ class _MuroState extends State<Muro> {
     return Material(
       child: Container(
           margin:EdgeInsets.all(10),
-          height: 40.0,
+          height: 60.0,
           child: ListTile(
             title: Text(document["titulo"]),
             //leading: Text(document['hora']),
