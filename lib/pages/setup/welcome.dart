@@ -12,7 +12,6 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-
     double box = width * 0.80;
     return Scaffold(
       backgroundColor: Colors.transparent,
