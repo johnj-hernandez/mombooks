@@ -8,7 +8,6 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _email, _password;
 
@@ -31,81 +30,103 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             Column(children: <Widget>[
               AppBar(
-                backgroundColor: new Color.fromRGBO(5, 4, 4, 0.5),
+                iconTheme: IconThemeData(color: Colors.purple),
+                backgroundColor: new Color.fromRGBO(255, 255, 255, 0.7),
                 centerTitle: true,
-                title: Text("Sign in"),
+                title: Text(
+                  "Sign up",
+                  style: TextStyle(color: Colors.purple),
+                ),
               ),
             ]),
             Center(
                 child: Container(
-                    child:
-                    Center(
-                      child: Container(
-                          alignment: Alignment.bottomCenter,
-                          width: box,
-                          height: 250,
-                          padding: EdgeInsets.fromLTRB(10, 40, 10, 0),
-                          color: Color.fromRGBO(5, 4, 4, 0.5),
-                          child: Form(
-                              key: _formKey,
-                              child: Column(
-                                children: <Widget>[
-                                  Text('Bienvenido',style: TextStyle(color: Colors.white,fontSize: 24),),
-                                  TextFormField(
-
-                                    style: TextStyle(color: Colors.white),
-                                    validator: (input) {
-                                      if (input.isEmpty) {
-                                        return 'Por favor digita un correo';
-                                      }
-                                    },
-                                    decoration: InputDecoration(labelText: 'Email',
-                                      fillColor: Colors.white,
-                                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(2))),
-
-                                    ),
-                                    onSaved: (input) => _email = input,
-                                  ),
-                                  TextFormField(
-                                    style: TextStyle(color: Colors.white),
-                                    validator: (input) {
-                                      if (input.length < 6) {
-                                        return 'Su contraseña debe ser de al menos 6 caracteres';
-                                      }
-                                    },
-                                    decoration:
-                                    InputDecoration(labelText: 'Contraseña',fillColor: Colors.white,
-                                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(2))),
-                                    ),
-                                    onSaved: (input) => _password = input,
-                                    obscureText: true,
-
-                                  ),
-                                  RaisedButton(
-                                    color: Colors.indigo,
-                                    textColor: Colors.white,
-                                    shape: Border(bottom: BorderSide(color: Colors.white)),
-                                    elevation: box,
-                                    highlightColor: Colors.white,
-                                    onPressed: signUp,
-                                    child: Text('Sign up'),
-                                  ),
-                                ],
-                              ))),
-                    )
-
-                ))
+                    child: Center(
+              child: Container(
+                  alignment: Alignment.bottomCenter,
+                  width: box,
+                  height: 300,
+                  decoration: new BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      color: Color.fromRGBO(255, 255, 255, 0.7)),
+                  padding: EdgeInsets.fromLTRB(10, 40, 10, 0),
+                  //color: Color.fromRGBO(5, 4, 4, 0.5),
+                  child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            'Bienvenido',
+                            style:
+                                TextStyle(color: Colors.purple, fontSize: 24),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            style: TextStyle(color: Colors.purple),
+                            validator: (input) {
+                              if (input.isEmpty) {
+                                return 'Por favor digita un correo';
+                              }
+                            },
+                            decoration: InputDecoration(
+                              labelText: 'Email',
+                              labelStyle: TextStyle(color: Colors.purple),
+                              fillColor: Colors.purple,
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                            ),
+                            onSaved: (input) => _email = input,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            style: TextStyle(color: Colors.purple),
+                            validator: (input) {
+                              if (input.length < 6) {
+                                return 'Su contraseña debe ser de al menos 6 caracteres';
+                              }
+                            },
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              labelStyle: TextStyle(color: Colors.purple),
+                              fillColor: Colors.purple,
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                            ),
+                            onSaved: (input) => _password = input,
+                            obscureText: true,
+                          ),
+                          RaisedButton(
+                            splashColor: Colors.purple,
+                            elevation: 10,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            textColor: Colors.purple,
+                            highlightColor: Colors.purple,
+                            onPressed: signUp,
+                            child: Text('Sign up'),
+                          ),
+                        ],
+                      ))),
+            )))
           ],
         ));
   }
 
   void signUp() async {
-    if(_formKey.currentState.validate()){
+    if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      try{
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password);
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
-      }catch(e){
+      try {
+        await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: _email, password: _password);
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginPage()));
+      } catch (e) {
         print(e.message);
       }
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mombooks/pages/new_note.dart';
 
 class DayView extends StatefulWidget {
   const DayView({Key key, this.user,this.fecha}) : super(key: key);
@@ -19,7 +20,9 @@ class _DayViewState extends State<DayView> {
       appBar: AppBar(title:Text(widget.fecha),),
       body: CustomeStreamBuilder(context),
       floatingActionButton: FloatingActionButton(
-        onPressed:(){},//mover al formulario de nueva nota
+        onPressed:(){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => NoteFirebase(user: this.widget.user)));
+        },//mover al formulario de nueva nota
         child: Icon(Icons.add),
         tooltip: "Agregar nueva nota",
       ),
