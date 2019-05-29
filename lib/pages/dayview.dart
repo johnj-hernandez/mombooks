@@ -14,41 +14,53 @@ class DayView extends StatefulWidget {
 class _DayViewState extends State<DayView> {
   @override
   Widget build(BuildContext context) {
-    String userID=this.widget.user.uid;
 
-    return Container(
-      margin: EdgeInsets.all(20),
-      child: StreamBuilder<QuerySnapshot>(
-        stream: Firestore.instance.collection("notes")
-            .where("uid",isEqualTo: userID)
-        .where("fecha",isEqualTo: this.widget.fecha).snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.hasError) return new Text('${snapshot.error}');
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-              return new Center(child: new CircularProgressIndicator());
-            default:
-              return ListView.builder(
-                itemCount: snapshot.data.documents.length,
-                itemBuilder: (BuildContext context, int i) =>
-                    _buildRow(context, snapshot.data.documents[i]),
-              );
-          }
-        },
+    return Scaffold(
+      appBar: AppBar(title:Text(widget.fecha),),
+      body: CustomeStreamBuilder(context),
+      floatingActionButton: FloatingActionButton(
+        onPressed:(){},//mover al formulario de nueva nota
+        child: Icon(Icons.add),
+        tooltip: "Agregar nueva nota",
       ),
+    );
+  }
+  Widget CustomeStreamBuilder(BuildContext context){
+    String userID=this.widget.user.uid;
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection("notes")
+          .where("uid",isEqualTo: userID)
+          .where("fecha",isEqualTo: this.widget.fecha).snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) return new Text('${snapshot.error}');
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting:
+            return new Center(child: new CircularProgressIndicator());
+          default:
+            return ListView.builder(
+              itemCount: snapshot.data.documents.length,
+              itemBuilder: (BuildContext context, int i) =>
+                  _buildRow(context, snapshot.data.documents[i]),
+            );
+        }
+      },
     );
   }
 
   Widget _buildRow(BuildContext context, DocumentSnapshot document) {
+    var sub= document['descripcion'].toString();
+    sub=sub.length<40?sub:sub.substring(0,40);
+    sub=sub+"....";
     return Material(
       child: Container(
-        
+        color: Colors.white70,
           margin:EdgeInsets.all(10),
-          height: 40.0,
+          height: 60.0,
           child: ListTile(
             title: Text(document["titulo"]),
             leading: Text(document['hora']),
-            //Falta agregarle el ontap que llevara a toda la informacion de la nota
+            subtitle: Text(sub),
+            trailing: Icon(Icons.arrow_forward_ios),
           )),
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Muro extends StatefulWidget {
@@ -37,7 +36,7 @@ class _MuroState extends State<Muro> {
 
   Widget _buildRow(BuildContext context, DocumentSnapshot document) {
     var sub= document['descripcion'].toString();
-    sub=sub.length<20?sub:sub.substring(0,20);
+    sub=sub.length<40?sub:sub.substring(0,40);
     sub=sub+"....";
     return Material(
       child: Container(
