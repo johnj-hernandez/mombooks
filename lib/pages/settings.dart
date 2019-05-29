@@ -56,7 +56,7 @@ class _SettingsState extends State<Settings> {
                      !this.edicion?Text(nombre,style: TextStyle(fontSize: 20,)):
                      Flexible(
                        child: TextField(
-                         
+
                          decoration: InputDecoration(
                              hintText: "Ingresa tu Nombre"
                          ),
