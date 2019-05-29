@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mombooks/pages/noteView.dart';
 
 class Muro extends StatefulWidget {
   @override
@@ -47,6 +48,9 @@ class _MuroState extends State<Muro> {
             //leading: Text(document['hora']),
             subtitle: Text(sub),
             trailing: Icon(Icons.arrow_forward_ios),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => NoteView(author: "",descripcion:document['descripcion'].toString() ,titulo: document["titulo"],)));
+            },
           )),
     );
   }

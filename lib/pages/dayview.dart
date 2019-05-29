@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mombooks/pages/new_note.dart';
+import 'package:mombooks/pages/noteView.dart';
 
 class DayView extends StatefulWidget {
   const DayView({Key key, this.user,this.fecha}) : super(key: key);
@@ -54,6 +55,9 @@ class _DayViewState extends State<DayView> {
     var sub= document['descripcion'].toString();
     sub=sub.length<40?sub:sub.substring(0,40);
     sub=sub+"....";
+    String titulo=document["titulo"];
+    String descripcion=document["descripcion"];
+    String author=document["nombre"].toString() + "   "+document["apellido"].toString();
     return Material(
       child: Container(
         color: Colors.white70,
@@ -64,6 +68,9 @@ class _DayViewState extends State<DayView> {
             leading: Text(document['hora']),
             subtitle: Text(sub),
             trailing: Icon(Icons.arrow_forward_ios),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => NoteView(author: "",descripcion: descripcion,titulo: titulo,)));
+            },
           )),
     );
   }
