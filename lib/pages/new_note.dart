@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mombooks/model.dart';
 import 'package:intl/intl.dart';
+import 'package:mombooks/pages/home.dart';
 
 class NoteFirebase extends StatefulWidget {
   const NoteFirebase({Key key, this.user}) : super(key: key);
@@ -195,7 +196,8 @@ class _NoteState extends State<NoteFirebase> with SingleTickerProviderStateMixin
                                     onPressed:(){
                                       print(_descripcion);
                                       print(myController);
-                                      saveNote(myController.text, description.text,"2019-05-24",_public,"9:00");},
+                                      saveNote(myController.text, description.text,"2019-05-24",_public,"9:00");
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Home(user: this.widget.user)));},
                                     child: Text('Guardar'),
                                   ),
                                 ],
