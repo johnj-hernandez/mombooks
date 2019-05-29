@@ -5,9 +5,9 @@ class NoteFB {
   String _fecha;
   String _public;
   DateTime _date;
-  double _hour;
+  double _hora;
 
-  NoteFB(this._uid, this._titulo, this._descripcion, this._date, this._fecha, this._public, this._hour);
+  NoteFB(this._uid, this._titulo, this._descripcion, this._date, this._fecha, this._public, this._hora);
 
   NoteFB.map(dynamic obj) {
     this._uid = obj['uid'];
@@ -16,7 +16,7 @@ class NoteFB {
     this._fecha = obj['fecha'];
     this._date = obj['date'];
     this._public = obj['public'];
-    this._hour = obj['hour'];
+    this._hora = obj['hour'];
   }
 
   String get uid => _uid;
@@ -25,7 +25,7 @@ class NoteFB {
   DateTime get date => _date;
   String get fecha => _fecha;
   String get public => _public;
-  double get hout => _hour;
+  double get hora => _hora;
 
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
@@ -37,7 +37,7 @@ class NoteFB {
     map['date'] = _date;
     map['fecha'] = _fecha;
     map['public'] = _public;
-    map['hour'] = _hour;
+    map['hora'] = _hora;
     return map;
   }
 
@@ -48,6 +48,6 @@ class NoteFB {
     this._date = map['date'];
     this._fecha = map['fecha'];
     this._public = map['public'];
-    this._hour = map['hour'];
+    this._hora = map['hora'];
   }
 }
