@@ -4,6 +4,7 @@ import 'package:mombooks/note.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mombooks/pages/dayview.dart';
+import 'package:mombooks/pages/muro.dart';
 
 class Home extends StatelessWidget {
 
@@ -11,11 +12,37 @@ class Home extends StatelessWidget {
   final FirebaseUser user;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("My Book"),
-      ),
-      body: CalendarHome(user: this.user,),
+    double _iconSize=20.0;
+    return DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar:PreferredSize(
+            preferredSize: Size.fromHeight(50),
+            child: AppBar(
+              backgroundColor: Colors.white,
+              elevation: 2.0,
+              bottom: TabBar(
+                labelColor: Colors.purpleAccent,
+                tabs: <Widget>[
+                  Tab(icon: Icon(Icons.calendar_today,size: _iconSize)),
+                  Tab(icon: Icon(Icons.assignment,size: _iconSize)),
+                  Tab(icon: Icon(Icons.settings,size: _iconSize))
+                ],
+              ),
+
+            ),
+          ),
+          body: Padding(
+            padding: EdgeInsets.all(4.0),
+            child: TabBarView(
+              children: <Widget>[
+                CalendarHome(user: this.user,),
+                Muro(),
+                Center(child: Icon(Icons.settings)),
+              ],
+            ),
+          ),
+        ),
     );
   }
 }
@@ -23,7 +50,6 @@ class Home extends StatelessWidget {
 class CalendarHome extends StatefulWidget {
   const CalendarHome({Key key, this.user}) : super(key: key);
   final FirebaseUser user;
-
   @override
   _CalendarHomeState createState() => _CalendarHomeState();
 }
