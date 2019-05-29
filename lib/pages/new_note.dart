@@ -198,6 +198,9 @@ class _NoteState extends State<NoteFirebase> with SingleTickerProviderStateMixin
                                       print(_descripcion);
                                       print(myController);
                                       saveNote(myController.text, description.text,"2019-05-24",_public,"9:00");
+                                      setState(() {
+
+                                      });
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => Home(user: this.widget.user)));},
                                     child: Text('Guardar'),
                                   ),
