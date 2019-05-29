@@ -20,7 +20,7 @@ class _WelcomePageState extends State<WelcomePage> {
         Container(
           decoration: new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("assets/images/pregnancy.jpg"),
+              image: new AssetImage("assets/images/login-3.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -28,9 +28,11 @@ class _WelcomePageState extends State<WelcomePage> {
         Column(
           children: <Widget>[
             AppBar(
-              backgroundColor: new Color.fromRGBO(5, 4, 4, 0.5),
+              backgroundColor: new Color.fromRGBO(255, 255, 255, 0.7),
               centerTitle: true,
-              title: Text("Welcome to mombook" + box.toString()),
+              title: Text("Welcome to mombook", style: TextStyle(
+                color: Colors.purple
+              ),),
             )
           ],
         ),
@@ -39,20 +41,27 @@ class _WelcomePageState extends State<WelcomePage> {
               alignment: Alignment.bottomCenter,
               width: box,
               height: 200,
-              color: Color.fromRGBO(5, 4, 4, 0.5),
-              child: Column(
+              //color: Color.fromRGBO(255, 255, 255, 0.7),
+              decoration: new BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  color: Color.fromRGBO(255, 255, 255, 0.7)
+              ),
+              child: Stack(
 
                 children: <Widget>[
-                  Center(
+                  Container(
+                    width: box,
                       child:
+
                       Text(
                         "Hello Mom.",
-                        style: TextStyle(color: Colors.white, fontSize: 32),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.purple, fontSize: 32),
                       ))
                   ,
                   Container(
-                      height: 160,
                       padding: EdgeInsets.fromLTRB(0, 80, 0, 0),
+                      height: 160,
                       alignment: Alignment.bottomCenter,
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,

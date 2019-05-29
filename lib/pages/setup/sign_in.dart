@@ -24,16 +24,19 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               decoration: new BoxDecoration(
                 image: new DecorationImage(
-                  image: new AssetImage("assets/images/baby.jpg"),
+                  image: new AssetImage("assets/images/login.jpg"),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
             Column(children: <Widget>[
               AppBar(
-                backgroundColor: new Color.fromRGBO(5, 4, 4, 0.5),
+                iconTheme: IconThemeData(
+                  color: Colors.purple
+                ),
+                backgroundColor: new Color.fromRGBO(255, 255, 255, 0.7),
                 centerTitle: true,
-                title: Text("Sign in"),
+                title: Text("Sign in",style: TextStyle(color: Colors.purple),),
               ),
             ]),
             Center(
@@ -48,16 +51,17 @@ class _LoginPageState extends State<LoginPage> {
                           //color: Color.fromRGBO(255, 255, 255, 0.5),
                           decoration: new BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(15)),
-                            color: Color.fromRGBO(255, 255, 255, 0.5)
+                            color: Color.fromRGBO(255, 255, 255, 0.7)
                           ),
                           child: Form(
                               key: _formKey,
                               child: Column(
                                 children: <Widget>[
                                   Text('Bienvenido',style: TextStyle(color: Colors.purple,fontSize: 24),),
+                                  SizedBox(height: 20,),
                                   TextFormField(
-
-                                    style: TextStyle(color: Colors.white),
+                                    autocorrect: false,
+                                    style: TextStyle(color: Colors.purple),
                                     validator: (input) {
                                       if (input.isEmpty) {
                                         return 'Por favor digita un correo';
@@ -72,7 +76,8 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   SizedBox(height: 20,),
                                   TextFormField(
-                                    style: TextStyle(color: Colors.white),
+                                    autocorrect: false,
+                                    style: TextStyle(color: Colors.purple),
                                     validator: (input) {
                                       if (input.length < 6) {
                                         return 'Su contraseña debe ser de al menos 6 caracteres';
@@ -88,11 +93,11 @@ class _LoginPageState extends State<LoginPage> {
 
                                   ),
                                   RaisedButton(
-                                    splashColor: Colors.blue,
+                                    splashColor: Colors.purple,
                                     elevation: 10,
                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                                     textColor: Colors.purple,
-                                    highlightColor: Colors.white,
+                                    highlightColor: Colors.purple,
                                     onPressed: signIn,
                                     child: Text('Sign in'),
                                   ),
