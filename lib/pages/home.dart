@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mombooks/pages/dayview.dart';
 import 'package:mombooks/pages/muro.dart';
+import 'package:mombooks/pages/settings.dart';
 
 class Home extends StatelessWidget {
 
@@ -16,6 +17,7 @@ class Home extends StatelessWidget {
     return DefaultTabController(
         length: 3,
         child: Scaffold(
+          resizeToAvoidBottomPadding: true,
           appBar:PreferredSize(
             preferredSize: Size.fromHeight(50),
             child: AppBar(
@@ -38,7 +40,7 @@ class Home extends StatelessWidget {
               children: <Widget>[
                 CalendarHome(user: this.user,),
                 Muro(),
-                Center(child: Icon(Icons.settings)),
+                Settings(uid: this.user.uid),
               ],
             ),
           ),
@@ -94,6 +96,7 @@ class _CalendarHomeState extends State<CalendarHome> {
                 todayButtonColor: Colors.blue,
                 todayBorderColor: Colors.blue,
                 markedDates: mylist ,
+                markedDateColor: Colors.amber,
                 markedDateShowIcon: true,
                 markedDateMoreCustomTextStyle: TextStyle(backgroundColor: Colors.teal,color: Colors.amber),
                 onDayPressed: (dateT,list){
