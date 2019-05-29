@@ -22,7 +22,7 @@ class _DayViewState extends State<DayView> {
       body: CustomeStreamBuilder(context),
       floatingActionButton: FloatingActionButton(
         onPressed:(){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => NoteFirebase(user: this.widget.user)));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => NoteFirebase(user: this.widget.user, fecha: widget.fecha)));
         },//mover al formulario de nueva nota
         child: Icon(Icons.add),
         tooltip: "Agregar nueva nota",

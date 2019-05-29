@@ -6,8 +6,9 @@ import 'package:intl/intl.dart';
 import 'package:mombooks/pages/home.dart';
 
 class NoteFirebase extends StatefulWidget {
-  const NoteFirebase({Key key, this.user}) : super(key: key);
+  const NoteFirebase({Key key, this.user, this.fecha}) : super(key: key);
   final FirebaseUser user;
+  final String fecha;
   @override
   _NoteState createState() => _NoteState();
 }
@@ -28,7 +29,7 @@ class _NoteState extends State<NoteFirebase> with SingleTickerProviderStateMixin
       dataMap['descripcion'] = descripcion;
       dataMap['date'] = new DateTime.now();
       dataMap['uid'] = widget.user.uid;
-      dataMap['fecha'] = formatter.format(now);
+      dataMap['fecha'] = this.widget.fecha;
       dataMap['public'] = public;
       dataMap['hora'] = formatterHour.format(now);
 
