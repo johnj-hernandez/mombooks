@@ -102,6 +102,7 @@ class _CalendarHomeState extends State<CalendarHome> {
                 onDayPressed: (dateT,list){
                   //comprobamos que el mes tenga dos digitos
                   String month=dateT.month<10?"0"+dateT.month.toString():dateT.month.toString();
+                  String day=dateT.day<10?"0"+dateT.day.toString():dateT.day.toString();
                   String fecha=(dateT.year).toString()+"-"+month+"-"+(dateT.day).toString();
                   print(fecha);
                   Navigator.push(context, MaterialPageRoute(builder: (context) => DayView(user: this.widget.user,fecha: fecha)));
