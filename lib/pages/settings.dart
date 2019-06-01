@@ -26,6 +26,16 @@ class _SettingsState extends State<Settings> {
           case ConnectionState.waiting:
             return new Center(child: new CircularProgressIndicator());
           default:
+            if(snapshot.data.documents.length==0){
+              Firestore.instance.collection("users").document().setData(
+                {
+                  "uid":widget.uid,
+                  "nombre":null,
+                  "apellido":null,
+                  "edad":null
+                }
+              );
+            }
             String nombre=snapshot.data.documents[0]["nombre"]==null?"Actualiza tu nombre":snapshot.data.documents[0]["nombre"].toString();
             String apellido=snapshot.data.documents[0]["apellido"]==null?"Actualiza tu apellido":snapshot.data.documents[0]["apellido"].toString();
             String edad=snapshot.data.documents[0]["edad"]==null?"Actualiza tu Edad":snapshot.data.documents[0]["edad"].toString();
@@ -33,6 +43,7 @@ class _SettingsState extends State<Settings> {
             String newApellido=this.edicion?"":"";
             String newEdad=this.edicion?"":"";
             //apellido="dedede";
+            print("nombre:"+nombre);
             return Container(
               child: Column(
                 children: <Widget>[
